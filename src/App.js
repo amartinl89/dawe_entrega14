@@ -4,6 +4,7 @@ const DEFAULT_QUERY = 'react'
 const PATH_BASE = 'https://hn.algolia.com/api/v1'
 const PATH_SEARCH = '/search'
 const PARAM_SEARCH = 'query='
+const PARAM_PAGE = 'page=';
 
 
 // function isSearched(searchTerm) {
@@ -15,7 +16,7 @@ const Search = ({value,onChange,children,onSubmit}) =>
 <form onSubmit={onSubmit}>
    {children}
    <input type="text" value={value} onChange={onChange}/>
-   <button type="submit">{children}</button>
+   <button type="button" onClick={onSubmit}>{children}</button>
 </form>
 
 
@@ -64,12 +65,13 @@ class App extends Component {
   setSearchTopStories(result) {
     this.setState({ result });
   }
-  fetchSearchTopStories(searchTerm){
-    fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}`)
-        .then(response => response.json())
-        .then(result => this.setSearchTopStories(result))
-        .catch(error => error);
- }
+  fetchSearchTopStories(searchTerm, page=0) {
+    fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}`)
+         .then(response => response.json())
+         .then(result => this.setSearchTopStories(result))
+         .catch(error => error);
+  }
+  
  
  componentDidMount() {
     const {searchTerm} = this.state;
@@ -79,6 +81,7 @@ class App extends Component {
 
   render() {
     const { result, searchTerm } = this.state; // Definir 'result' en el alcance del método render()
+    const page = (result && result.page) || 0;
     return (
       <div className="page">
         <form>
@@ -89,6 +92,10 @@ class App extends Component {
         </form>
         {/* Pasar 'result.hits' como prop */}
         {result && <Table result={result.hits}  onDismiss={this.onDismiss} />}
+        <div className={"interactions"}>
+          <Button onClick={() => this.fetchSearchTopStories(searchTerm, page + 1)}>More</Button>
+        </div>
+
       </div>
     )
   }
