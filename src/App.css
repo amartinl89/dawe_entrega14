@@ -1,0 +1,86 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Estilos para el botón inline */
+.button-inline {
+  display: inline-block;
+  background-color: #9da29d;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Estilos para la página */
+.page {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f0f0f0; /* Color de fondo */
+  border-radius: 8px; /* Bordes redondeados */
+  border: 1px solid #ccc; /* Borde con color gris claro */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+.page span {
+  display: inline-block;
+  
+}
+
+.page a {
+  color: #007bff; /* Color azul para los enlaces */
+  text-decoration: none; /* Elimina el subrayado predeterminado */
+}
+
+.page a:hover {
+  text-decoration: underline; /* Subrayado al pasar el ratón sobre el enlace */
+}
+/* Estilos para el contenedor de interacciones */
+.interactions {
+  margin-top: 20px; /* Espacio entre el contenido y el contenedor de interacciones */
+  display: flex;
+  justify-content: center; /* Centra los elementos horizontalmente */
+}
+
